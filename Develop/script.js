@@ -1,6 +1,5 @@
 // Assignment code here
 
-
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
@@ -10,8 +9,52 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
+
+function generatePassword() {
+  var characters = parseInt(
+    window.prompt(
+      "How many characters would you like password to be (btwn 8-128)?"
+    )
+  );
+
+  if (chars < 8 || chars > 128 || isNaN(chars)) {
+    window.alert("Invalid response");
+    return "Need characters to be between 8-128. Please try again";
+  }
+
+  var numbers = window.confirm(
+    "Do you want to include numbers? \n Click OK for YES and Cancel for NO"
+  );
+
+  var upperCase = window.confirm(
+    "Do you want to include uppercase letters? \n Click OK for YES and Cancel for NO"
+  );
+
+  var lowerCase = window.confirm(
+    "Do you want to include lowercase letters? \n Click OK for YES and Cancel for NO"
+  );
+
+  var specialCharacter = window.confirm(
+    "Do you want to include special characters? \n Click OK for YES and Cancel for NO"
+  );
+
+  if (
+    number == false &&
+    lowerCase == false &&
+    upperCase == false &&
+    specialCharacters == false
+  ) {
+    window.alert("Invalid response");
+    return "Cannot generate password. Please try again";
+  }
+}
+
+var generatedPassword = "";
+var numbers = "0123456789";
+var lowerCaseletters = "abcdefghijklmnopqrstuvwxyz";
+var upperCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var specialCharacters = "~!@#$%^&*()_?+=<>";
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
