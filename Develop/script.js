@@ -18,12 +18,12 @@ function generatePassword() {
     )
   );
 
-  if (chars < 8 || chars > 128 || isNaN(chars)) {
+  if (characters < 8 || characters > 128 || isNaN(characters)) {
     window.alert("Invalid response");
     return "Need characters to be between 8-128. Please try again";
   }
 
-  var numbers = window.confirm(
+  var number = window.confirm(
     "Do you want to include numbers? \n Click OK for YES and Cancel for NO"
   );
 
@@ -48,13 +48,39 @@ function generatePassword() {
     window.alert("Invalid response");
     return "Cannot generate password. Please try again";
   }
-}
 
-var generatedPassword = "";
-var numbers = "0123456789";
-var lowerCaseletters = "abcdefghijklmnopqrstuvwxyz";
-var upperCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var specialCharacters = "~!@#$%^&*()_?+=<>";
+  var generatedPassword = "";
+  var numbers = "0123456789";
+  var lowerCaseletters = "abcdefghijklmnopqrstuvwxyz";
+  var upperCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var specialCharacters = "~!@#$%^&*()_?+=<>";
+
+  if (number == true) {
+    generatedPassword = generatedPassword + numbers;
+  }
+
+  if (lowerCase == true) {
+    generatedPassword = generatedPassword + lowerCaseletters;
+  }
+
+  if (upperCase == true) {
+    generatedPassword = generatedPassword + upperCaseLetters;
+  }
+
+  if (specialCharacter == true) {
+    generatedPassword = generatedPassword + specialCharacters;
+  }
+
+  var finalPassword = "";
+  for (let i = 0; i < characters; i++) {
+    let randomIndex = Math.floor(Math.random() * generatedPassword.length);
+    let randomCharacter = generatedPassword.charAt(randomIndex);
+
+    finalPassword = finalPassword + randomCharacter;
+  }
+
+  return finalPassword;
+}
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
